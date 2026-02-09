@@ -4,141 +4,150 @@ import { motion } from "framer-motion";
 
 export function RobotHumanHands() {
     return (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10 overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden select-none">
             <svg
-                width="800"
-                height="400"
-                viewBox="0 0 800 400"
+                width="100%"
+                height="100%"
+                viewBox="0 0 1400 800"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-full max-w-4xl"
+                className="w-full h-full opacity-40 xl:opacity-50"
+                preserveAspectRatio="xMidYMid slice"
             >
-                {/* Human Hand (Black Silhouette - Left Side) */}
+                <defs>
+                    <linearGradient id="human-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="var(--foreground)" stopOpacity="0.1" />
+                        <stop offset="100%" stopColor="var(--foreground)" stopOpacity="0.8" />
+                    </linearGradient>
+                    <linearGradient id="robot-gradient" x1="100%" y1="0%" x2="0%" y2="0%">
+                        <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.1" />
+                        <stop offset="100%" stopColor="var(--accent)" stopOpacity="0.8" />
+                    </linearGradient>
+                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="5" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
+
+                {/* Human Hand (Abstract Flowing Lines) - Left */}
                 <motion.g
-                    initial={{ x: -50, opacity: 0 }}
+                    initial={{ x: -100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1.2, ease: "easeOut" }}
+                    transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
                 >
-                    {/* Palm */}
+                    {/* Artistic representation of a hand reaching out */}
                     <path
-                        d="M 150 200 Q 180 180 200 200 L 200 280 Q 190 300 170 300 Q 150 300 140 280 Z"
-                        fill="#000000"
+                        d="M 200 800 C 250 600, 400 500, 550 450 C 600 435, 620 420, 650 420"
+                        stroke="url(#human-gradient)"
+                        strokeWidth="2"
+                        fill="none"
+                        strokeLinecap="round"
                     />
-                    {/* Thumb */}
                     <path
-                        d="M 150 220 Q 130 210 120 230 Q 115 245 125 255 Q 135 260 145 250 Z"
-                        fill="#000000"
+                        d="M 220 800 C 270 620, 420 520, 560 480 C 610 465, 640 460, 680 440"
+                        stroke="url(#human-gradient)"
+                        strokeWidth="1.5"
+                        fill="none"
+                        strokeLinecap="round"
+                        opacity="0.6"
                     />
-                    {/* Index Finger */}
-                    <motion.path
-                        d="M 175 200 L 180 140 Q 182 125 190 125 Q 198 125 200 140 L 195 200 Z"
-                        fill="#000000"
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                    {/* Middle Finger */}
                     <path
-                        d="M 185 200 L 190 130 Q 192 115 200 115 Q 208 115 210 130 L 205 200 Z"
-                        fill="#000000"
+                        d="M 180 800 C 230 580, 380 480, 520 420 C 560 405, 580 390, 620 380"
+                        stroke="url(#human-gradient)"
+                        strokeWidth="1"
+                        fill="none"
+                        strokeLinecap="round"
+                        opacity="0.4"
                     />
-                    {/* Ring Finger */}
-                    <path
-                        d="M 195 200 L 200 140 Q 202 125 210 125 Q 218 125 220 140 L 215 200 Z"
-                        fill="#000000"
-                    />
-                    {/* Pinky */}
-                    <path
-                        d="M 205 200 L 210 155 Q 212 142 218 142 Q 224 142 226 155 L 222 200 Z"
-                        fill="#000000"
-                    />
-                    {/* Wrist */}
-                    <rect x="140" y="300" width="60" height="40" rx="5" fill="#000000" />
+
+                    {/* Fingertip Glow */}
+                    <circle cx="650" cy="420" r="4" fill="var(--foreground)" opacity="0.8" />
                 </motion.g>
 
-                {/* Robot Hand (Mechanical - Right Side) */}
+                {/* Robot Hand (Geometric/Circuit Lines) - Right */}
                 <motion.g
-                    initial={{ x: 50, opacity: 0 }}
+                    initial={{ x: 100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1.2, ease: "easeOut" }}
+                    transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
                 >
-                    {/* Palm Base */}
-                    <rect x="600" y="200" width="60" height="100" rx="8" fill="none" stroke="#007AFF" strokeWidth="3" />
+                    {/* Main arm structure */}
+                    <path
+                        d="M 1200 800 L 1000 600 L 850 450 L 750 420"
+                        stroke="url(#robot-gradient)"
+                        strokeWidth="2"
+                        fill="none"
+                        strokeLinecap="round"
+                    />
 
-                    {/* Palm Circuit Lines */}
-                    <line x1="610" y1="220" x2="650" y2="220" stroke="#007AFF" strokeWidth="1" opacity="0.6" />
-                    <line x1="610" y1="240" x2="650" y2="240" stroke="#007AFF" strokeWidth="1" opacity="0.6" />
-                    <line x1="610" y1="260" x2="650" y2="260" stroke="#007AFF" strokeWidth="1" opacity="0.6" />
+                    {/* Circuit details */}
+                    <circle cx="1000" cy="600" r="6" fill="var(--background)" stroke="var(--accent)" strokeWidth="2" />
+                    <circle cx="850" cy="450" r="4" fill="var(--background)" stroke="var(--accent)" strokeWidth="2" />
 
-                    {/* Thumb Joint */}
-                    <circle cx="595" cy="230" r="6" fill="none" stroke="#007AFF" strokeWidth="2" />
-                    <rect x="570" y="225" width="25" height="35" rx="4" fill="none" stroke="#007AFF" strokeWidth="2" />
-                    <line x1="575" y1="235" x2="590" y2="235" stroke="#007AFF" strokeWidth="1" />
+                    {/* Parallel data lines */}
+                    <path
+                        d="M 1220 800 L 1020 600 L 870 450 L 770 420"
+                        stroke="url(#robot-gradient)"
+                        strokeWidth="1"
+                        fill="none"
+                        strokeDasharray="4 4"
+                        opacity="0.6"
+                    />
+                    <path
+                        d="M 1180 800 L 980 600 L 830 450 L 730 420"
+                        stroke="url(#robot-gradient)"
+                        strokeWidth="1"
+                        fill="none"
+                        opacity="0.4"
+                    />
 
-                    {/* Index Finger */}
-                    <motion.g
-                        animate={{ y: [0, -5, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-                    >
-                        <circle cx="615" cy="195" r="5" fill="none" stroke="#007AFF" strokeWidth="2" />
-                        <rect x="610" y="140" width="10" height="55" rx="3" fill="none" stroke="#007AFF" strokeWidth="2" />
-                        <line x1="615" y1="155" x2="615" y2="180" stroke="#007AFF" strokeWidth="1" />
-                        <circle cx="615" cy="167" r="3" fill="#007AFF" />
-                    </motion.g>
-
-                    {/* Middle Finger */}
-                    <circle cx="630" cy="195" r="5" fill="none" stroke="#007AFF" strokeWidth="2" />
-                    <rect x="625" y="130" width="10" height="65" rx="3" fill="none" stroke="#007AFF" strokeWidth="2" />
-                    <line x1="630" y1="145" x2="630" y2="180" stroke="#007AFF" strokeWidth="1" />
-                    <circle cx="630" cy="160" r="3" fill="#007AFF" />
-
-                    {/* Ring Finger */}
-                    <circle cx="645" cy="195" r="5" fill="none" stroke="#007AFF" strokeWidth="2" />
-                    <rect x="640" y="140" width="10" height="55" rx="3" fill="none" stroke="#007AFF" strokeWidth="2" />
-                    <line x1="645" y1="155" x2="645" y2="180" stroke="#007AFF" strokeWidth="1" />
-                    <circle cx="645" cy="167" r="3" fill="#007AFF" />
-
-                    {/* Pinky */}
-                    <circle cx="660" cy="195" r="5" fill="none" stroke="#007AFF" strokeWidth="2" />
-                    <rect x="655" y="155" width="10" height="40" rx="3" fill="none" stroke="#007AFF" strokeWidth="2" />
-                    <line x1="660" y1="165" x2="660" y2="185" stroke="#007AFF" strokeWidth="1" />
-
-                    {/* Wrist/Arm */}
-                    <rect x="600" y="300" width="60" height="40" rx="6" fill="none" stroke="#007AFF" strokeWidth="3" />
-                    <line x1="610" y1="310" x2="650" y2="310" stroke="#007AFF" strokeWidth="1" opacity="0.6" />
-                    <line x1="610" y1="320" x2="650" y2="320" stroke="#007AFF" strokeWidth="1" opacity="0.6" />
-                    <line x1="610" y1="330" x2="650" y2="330" stroke="#007AFF" strokeWidth="1" opacity="0.6" />
-
-                    {/* Circuit Nodes */}
-                    <circle cx="610" cy="310" r="2" fill="#007AFF" />
-                    <circle cx="630" cy="320" r="2" fill="#007AFF" />
-                    <circle cx="650" cy="330" r="2" fill="#007AFF" />
+                    {/* Fingertip Node */}
+                    <circle cx="750" cy="420" r="4" fill="var(--accent)" filter="url(#glow)" />
                 </motion.g>
 
-                {/* Connection Spark/Energy */}
+                {/* Connection Energy (The Spark) */}
                 <motion.g
                     initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: [0, 1, 0], scale: [0.8, 1.2, 0.8] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    animate={{ opacity: [0, 1, 0.5, 1], scale: [0.5, 1.5, 1, 1.2] }}
+                    transition={{ duration: 3, delay: 1.5, repeat: Infinity, repeatType: "reverse" }}
                 >
-                    <circle cx="400" cy="200" r="8" fill="#007AFF" opacity="0.3" />
-                    <circle cx="400" cy="200" r="4" fill="#007AFF" opacity="0.6" />
-                    <circle cx="400" cy="200" r="2" fill="#FFFFFF" />
+                    {/* Central spark */}
+                    <circle cx="700" cy="420" r="2" fill="var(--accent)" filter="url(#glow)" />
+
+                    {/* Connecting line */}
+                    <motion.line
+                        x1="650" y1="420" x2="750" y2="420"
+                        stroke="var(--accent)"
+                        strokeWidth="1"
+                        opacity="0.5"
+                        strokeDasharray="2 4"
+                        animate={{ strokeDashoffset: [0, -20] }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    />
                 </motion.g>
 
-                {/* Connecting Lines */}
-                <motion.line
-                    x1="226"
-                    y1="140"
-                    x2="610"
-                    y2="140"
-                    stroke="#007AFF"
-                    strokeWidth="1"
-                    strokeDasharray="5,5"
-                    opacity="0.2"
-                    animate={{ strokeDashoffset: [0, -10] }}
-                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                />
+                {/* Floating Particles (Data/Dust) */}
+                {Array.from({ length: 15 }).map((_, i) => (
+                    <motion.circle
+                        key={i}
+                        cx={600 + Math.random() * 200}
+                        cy={350 + Math.random() * 150}
+                        r={Math.random() * 2}
+                        fill={i % 2 === 0 ? "var(--foreground)" : "var(--accent)"}
+                        opacity={Math.random() * 0.5}
+                        animate={{
+                            y: [0, -20, 0],
+                            opacity: [0, 0.5, 0],
+                        }}
+                        transition={{
+                            duration: 3 + Math.random() * 2,
+                            repeat: Infinity,
+                            delay: Math.random() * 2,
+                            ease: "easeInOut",
+                        }}
+                    />
+                ))}
             </svg>
         </div>
     );
 }
+
