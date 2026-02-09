@@ -5,6 +5,7 @@ import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import { RobotHumanHands } from "@/components/RobotHumanHands";
+import { Magnetic } from "@/components/Magnetic";
 import { useEffect } from "react";
 
 const typingContainer = {
@@ -48,7 +49,7 @@ export function HeroSection() {
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, [x, y]);
 
-    const rotateX = useTransform(mouseY, [-0.5, 0.5], [2, -2]); // Subtle rotation for premium feel
+    const rotateX = useTransform(mouseY, [-0.5, 0.5], [2, -2]);
     const rotateY = useTransform(mouseX, [-0.5, 0.5], [-2, 2]);
 
     return (
@@ -58,7 +59,7 @@ export function HeroSection() {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] -z-10 opacity-60" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-400/5 rounded-full blur-[100px] -z-10 opacity-60" />
 
-            {/* Robot-Human Hands Visual - Scaled and Poitioned */}
+            {/* Robot-Human Hands Visual */}
             <RobotHumanHands />
 
             <motion.div
@@ -71,9 +72,20 @@ export function HeroSection() {
                         animate="show"
                         className="space-y-8"
                     >
-                        <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-medium border border-accent/20 backdrop-blur-sm">
+                        <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 text-accent text-sm font-medium border border-accent/20 backdrop-blur-md shadow-[0_0_15px_rgba(0,122,255,0.15)]">
                             <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                                <motion.span
+                                    animate={{
+                                        scale: [1, 1.05, 1],
+                                        opacity: [0.8, 1, 0.8],
+                                        transition: {
+                                            duration: 3,
+                                            repeat: Infinity,
+                                            ease: "easeInOut",
+                                        }
+                                    }}
+                                    className="absolute inline-flex h-full w-full rounded-full bg-accent"
+                                />
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                             </span>
                             Available for new opportunities
@@ -93,20 +105,24 @@ export function HeroSection() {
                             <span className="text-accent inline-block animate-pulse">.</span>
                         </h1>
 
-                        <motion.p variants={fadeUp} className="text-xl md:text-2xl text-muted-foreground max-w-xl leading-relaxed">
+                        <motion.p variants={fadeUp} className="text-xl md:text-2xl text-muted-foreground max-w-xl leading-relaxed text-balance">
                             Full-Stack Engineer &amp; Systems Architect.
                             I build <span className="text-foreground font-medium">high-performance</span> digital experiences and scalable backend systems.
                         </motion.p>
 
                         <motion.div variants={fadeUp} className="flex flex-wrap gap-4 pt-4">
-                            <Button size="lg" className="rounded-full text-base px-8 h-12 shadow-lg shadow-accent/25 hover:shadow-accent/40 transition-all hover:scale-105" asChild>
-                                <Link href="/projects">
-                                    View Projects <ArrowRight className="ml-2 w-4 h-4" />
-                                </Link>
-                            </Button>
-                            <Button variant="outline" size="lg" className="rounded-full text-base px-8 h-12 hover:bg-accent/5 transition-all hover:scale-105 border-accent/20" asChild>
-                                <Link href="/contact">Contact Me</Link>
-                            </Button>
+                            <Magnetic strength={40}>
+                                <Button size="lg" className="rounded-full text-base px-8 h-12 shadow-lg shadow-accent/25 hover:shadow-accent/40 transition-all hover:scale-105" asChild>
+                                    <Link href="/projects">
+                                        View Projects <ArrowRight className="ml-2 w-4 h-4" />
+                                    </Link>
+                                </Button>
+                            </Magnetic>
+                            <Magnetic strength={20}>
+                                <Button variant="outline" size="lg" className="rounded-full text-base px-8 h-12 hover:bg-accent/5 transition-all hover:scale-105 border-accent/20" asChild>
+                                    <Link href="/contact">Contact Me</Link>
+                                </Button>
+                            </Magnetic>
                         </motion.div>
 
                         <motion.div variants={fadeUp} className="flex items-center gap-6 pt-8 text-muted-foreground">
@@ -125,7 +141,7 @@ export function HeroSection() {
                         </motion.div>
                     </motion.div>
 
-                    {/* Visual Space for Hands - ensuring they aren't covered by text on large screens */}
+                    {/* Visual Space for Hands */}
                     <div className="hidden lg:block h-full min-h-[400px]" />
                 </div>
             </motion.div>
