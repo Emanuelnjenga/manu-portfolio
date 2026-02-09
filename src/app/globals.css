@@ -12,7 +12,8 @@
 
   /* Typography */
   --font-times: "Times New Roman", Times, serif;
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: "Times New Roman", Times, serif;
+  /* Force serif everywhere */
 }
 
 @theme inline {
@@ -22,7 +23,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-accent: var(--accent);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-times);
   --font-serif: var(--font-times);
 }
 
@@ -30,7 +31,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-times);
-  /* Default to serif for that editorial feel */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

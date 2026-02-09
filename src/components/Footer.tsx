@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Github, Linkedin, Twitter, ArrowUp } from "lucide-react";
 import { Magnetic } from "@/components/Magnetic";
 import { Button } from "@/components/Button";
+import { Logo } from "@/components/Logo";
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
@@ -20,8 +21,8 @@ export function Footer() {
             <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-16">
                     <div className="col-span-1 md:col-span-2">
-                        <Link href="/" className="text-2xl font-bold tracking-tighter block mb-6">
-                            Manu<span className="text-accent">.</span>
+                        <Link href="/" className="inline-block mb-6 hover:opacity-80 transition-opacity">
+                            <Logo />
                         </Link>
                         <p className="text-muted-foreground max-w-sm text-lg leading-relaxed text-pretty">
                             Designing scalable systems, intelligent products, and high-impact digital experiences.
