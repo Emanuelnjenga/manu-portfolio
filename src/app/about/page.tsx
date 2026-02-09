@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Section } from "@/components/Section";
 import { ManuAssistant } from "@/components/ManuAssistant";
 import { StickyCTA } from "@/components/StickyCTA";
+import { GitHubGraph } from "@/components/GitHubGraph";
 import { SKILLS } from "@/lib/data";
 
 const EXPERIENCE = [
@@ -91,6 +92,11 @@ export default function AboutPage() {
                             </div>
                         ))}
                     </div>
+                </Section>
+
+                <Section className="bg-muted/10">
+                    <h2 className="text-3xl md:text-4xl font-serif mb-8">Development Activity</h2>
+                    <GitHubGraph />
                 </Section>
             </main>
 
