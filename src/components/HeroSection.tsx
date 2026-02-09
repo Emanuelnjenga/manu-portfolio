@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/Button";
+import { RobotHumanHands } from "@/components/RobotHumanHands";
 import { useEffect } from "react";
 
 const typingContainer = {
@@ -55,6 +56,9 @@ export function HeroSection() {
             {/* Background Gradient Mesh */}
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent/10 via-background to-background opacity-70" />
             <div className="absolute top-1/4 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -z-10 animate-pulse" />
+
+            {/* Robot-Human Hands Visual */}
+            <RobotHumanHands />
 
             <motion.div
                 style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
