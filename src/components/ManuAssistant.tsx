@@ -29,6 +29,7 @@ export function ManuAssistant() {
     const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
     const [input, setInput] = useState("");
     const [isTyping, setIsTyping] = useState(false);
+    const [privacyOptIn, setPrivacyOptIn] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -87,6 +88,11 @@ export function ManuAssistant() {
         setMessages((prev) => [...prev, userMessage]);
         setInput("");
         setIsTyping(true);
+
+        // Hypothetical logging if opted in
+        if (privacyOptIn) {
+            console.log("Logging transcript for training/qa...");
+        }
 
         // Simulate AI processing and retrieval
         setTimeout(() => {
@@ -208,6 +214,18 @@ export function ManuAssistant() {
                                 <Send className="w-4 h-4" />
                             </Button>
                         </form>
+                        <div className="mt-2 flex items-center justify-center gap-2">
+                            <input
+                                type="checkbox"
+                                id="privacy-opt-in"
+                                checked={privacyOptIn}
+                                onChange={(e) => setPrivacyOptIn(e.target.checked)}
+                                className="w-3 h-3 accent-accent rounded-sm"
+                            />
+                            <label htmlFor="privacy-opt-in" className="text-[10px] text-muted-foreground cursor-pointer select-none">
+                                Allow transcript logging for quality assurance.
+                            </label>
+                        </div>
                     </div>
                 </div>
             )}

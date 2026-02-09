@@ -1,11 +1,11 @@
+
 export const PROJECTS = [
     {
         slug: "distributed-asset-platform",
         title: "Distributed Asset Platform",
-        description: "High-frequency trading platform handling 50k+ transactions per second wiht <5ms latency.",
+        description: "High-frequency trading platform handling 50k+ transactions per second with <5ms latency.",
         category: "Systems Engineering",
         thumbnail: "https://images.unsplash.com/photo-1642543492481-44e81e3914a7?q=80&w=2070&auto=format&fit=crop",
-        video: "https://res.cloudinary.com/demo/video/upload/v1690890983/samples/sea-turtle.mp4", // Placeholder video
         year: "2024",
         impact: "Reduced infrastructure costs by 40% while doubling throughput.",
         stack: ["Go", "Rust", "Kafka", "Kubernetes", "gRPC"],
@@ -26,7 +26,6 @@ export const PROJECTS = [
         description: "Semantic search engine for legal documents using hybrid interaction-based retrieval.",
         category: "AI & ML",
         thumbnail: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1965&auto=format&fit=crop",
-        video: "",
         year: "2023",
         impact: "Improved retrieval relevance by 65% for complex queries.",
         stack: ["Python", "PyTorch", "Pinecone", "Next.js", "FastAPI"],
@@ -46,7 +45,6 @@ export const PROJECTS = [
         description: "Real-time monitoring dashboard for 10,000+ connected industrial sensors.",
         category: "Full Stack",
         thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
-        video: "",
         year: "2023",
         impact: "Zero-downtime deployment for 18 months running.",
         stack: ["TypeScript", "Node.js", "GraphQL", "TimescaleDB", "Redis"],
@@ -66,12 +64,11 @@ export const PROJECTS = [
         description: "AI-driven route optimization system for last-mile delivery fleets.",
         category: "Systems & AI",
         thumbnail: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop",
-        video: "",
         year: "2022",
         impact: "Reduced fuel consumption by 15% and delivery times by 20%.",
         stack: ["Python", "OR-Tools", "Google Maps API", "Docker", "AWS Lambda"],
         content: {
-            problem: "Manual routing was inefficient and didn traffic conditions, leading to late deliveries and high fuel costs.",
+            problem: "Manual routing was inefficient and didn't account for real-time traffic conditions, leading to late deliveries and high fuel costs.",
             solution: "Developed an automated routing engine using Google OR-Tools for the VRP (Vehicle Routing Problem). Integrated real-time traffic data to dynamically re-route drivers during the day.",
             architecture: "Order Service -> Route Solver (Lambda) -> Optimization Engine (OR-Tools) -> Driver App",
             tradeoffs: [
@@ -86,7 +83,6 @@ export const PROJECTS = [
         description: "Secure, compliant KYC/AML identity verification system.",
         category: "Security",
         thumbnail: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop",
-        video: "",
         year: "2022",
         impact: "Achieved SOC2 Type II compliance and reduced verification time to <2 minutes.",
         stack: ["Java", "Spring Boot", "AWS KMS", "React"],
@@ -106,7 +102,6 @@ export const PROJECTS = [
         description: "Internal CLI tool to standardize microservice scaffolding and deployment.",
         category: "DevEx",
         thumbnail: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=2088&auto=format&fit=crop",
-        video: "",
         year: "2021",
         impact: "Reduced new service setup time from 3 days to 15 minutes.",
         stack: ["Go", "Cobra", "Terraform", "GitHub Actions"],

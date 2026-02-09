@@ -92,11 +92,11 @@ export function HeroSection() {
                         </motion.div>
 
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold tracking-tight leading-[1.0] lg:leading-[1.1]">
-                            <span className="block text-muted-foreground text-3xl md:text-4xl lg:text-5xl mb-4 font-sans font-normal">
-                                Hello, I&apos;m
+                            <span className="block text-muted-foreground text-3xl md:text-4xl lg:text-5xl mb-4 font-sans font-normal italic">
+                                Engineer. Systems Thinker.
                             </span>
                             <motion.span variants={typingContainer} initial="hidden" animate="show" className="inline-block text-foreground drop-shadow-sm">
-                                {Array.from("Emmanuel").map((char, index) => (
+                                {Array.from("Builder").map((char, index) => (
                                     <motion.span key={index} variants={typingLetter} className="inline-block">
                                         {char}
                                     </motion.span>
@@ -105,9 +105,8 @@ export function HeroSection() {
                             <span className="text-accent inline-block animate-pulse">.</span>
                         </h1>
 
-                        <motion.p variants={fadeUp} className="text-xl md:text-2xl text-muted-foreground max-w-xl leading-relaxed text-balance">
-                            Full-Stack Engineer &amp; Systems Architect.
-                            I build <span className="text-foreground font-medium">high-performance</span> digital experiences and scalable backend systems.
+                        <motion.p variants={fadeUp} className="text-xl md:text-2xl text-muted-foreground max-w-xl leading-relaxed text-balance font-serif">
+                            Designing scalable systems, intelligent products, and high-impact digital experiences.
                         </motion.p>
 
                         <motion.div variants={fadeUp} className="flex flex-wrap gap-4 pt-4">
