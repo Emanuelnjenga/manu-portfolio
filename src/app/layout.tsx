@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { CustomCursor } from "@/components/CustomCursor";
 
 export const metadata: Metadata = {
   title: "Manu — Engineer, Systems Thinker, Product Builder",
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className="antialiased text-foreground bg-background min-h-screen flex flex-col">
+        <CustomCursor />
         {children}
       </body>
     </html>
