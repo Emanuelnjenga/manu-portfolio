@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { PROJECTS, ARTICLES } from "@/lib/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://manu.dev"; // Dummy domain
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://manu.dev";
 
     const projectUrls = PROJECTS.map((project) => ({
         url: `${baseUrl}/projects/${project.slug}`,

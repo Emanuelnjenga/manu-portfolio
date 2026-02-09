@@ -52,6 +52,7 @@ export function ProjectCard({
                     alt={title}
                     width={800}
                     height={500}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className={cn(
                         "h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 relative z-10",
                         isHovered && video ? "opacity-0" : "opacity-100"
@@ -87,5 +88,26 @@ export function ProjectCard({
                 </p>
             </div>
         </Link>
+    );
+}
+
+import { Skeleton } from "@/components/ui/skeleton";
+
+export function ProjectCardSkeleton() {
+    return (
+        <div className="rounded-2xl border border-border/50 bg-muted/20 overflow-hidden h-full">
+            <Skeleton className="aspect-[16/10] w-full" />
+            <div className="p-6 space-y-4">
+                <div className="flex justify-between items-center">
+                    <Skeleton className="h-4 w-24 rounded-full" />
+                    <Skeleton className="h-4 w-4 rounded-full" />
+                </div>
+                <Skeleton className="h-6 w-3/4" />
+                <div className="space-y-2">
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-2/3" />
+                </div>
+            </div>
+        </div>
     );
 }

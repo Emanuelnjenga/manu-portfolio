@@ -124,6 +124,7 @@ export function ManuAssistant() {
                         <button
                             onClick={() => setIsOpen(false)}
                             className="p-1 hover:bg-muted rounded-full transition-colors"
+                            aria-label="Close Assistant"
                         >
                             <X className="w-5 h-5 text-muted-foreground" />
                         </button>
@@ -195,12 +196,14 @@ export function ManuAssistant() {
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 className="w-full bg-muted/30 border border-input rounded-full py-3 pl-4 pr-12 text-sm focus:outline-none focus:ring-1 focus:ring-accent transition-all"
+                                aria-label="Chat input"
                             />
                             <Button
                                 size="icon"
                                 className="absolute right-1 top-1 h-8 w-8 rounded-full"
                                 type="submit"
                                 disabled={!input.trim() || isTyping}
+                                aria-label="Send message"
                             >
                                 <Send className="w-4 h-4" />
                             </Button>
