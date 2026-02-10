@@ -1,0 +1,17 @@
+Metric,Year 1,Year 2,Year 3
+Revenue,,
+"  Service Revenue (Retainers)",$150000,$450000,$1200000
+"  Product Revenue (SaaS)",$0,$50000,$250000
+"  Total Revenue",$150000,$500000,$1450000
+COGS,,
+"  Hosting & Infra",$5000,$12000,$25000
+"  Contractor Costs",$40000,$150000,$400000
+"  Gross Margin",$105000,$338000,$1025000
+OpEx,,
+"  Salaries (Founders)",$60000,$120000,$250000
+"  Marketing & Sales",$10000,$50000,$150000
+"  G&A",$5000,$15000,$40000
+"  EBITDA",$30000,$153000,$585000
+Headcount,,
+"  Engineers",1,3,8
+"  Designers",0,1,2
