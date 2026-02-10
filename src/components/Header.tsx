@@ -47,8 +47,7 @@ export function Header() {
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-black",
-                scrolled ? "bg-background/90 backdrop-blur-xl shadow-sm supports-[backdrop-filter]:bg-background/75" : "bg-transparent",
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white",
                 visible ? "translate-y-0" : "-translate-y-full"
             )}
         >

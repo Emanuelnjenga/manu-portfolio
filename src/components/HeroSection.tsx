@@ -53,25 +53,9 @@ export function HeroSection() {
     const rotateY = useTransform(mouseX, [-0.5, 0.5], [-2, 2]);
 
     return (
-        <section className="relative min-h-[90vh] flex flex-col justify-center px-6 pt-20 overflow-hidden perspective-1000">
-            {/* Background Gradient Mesh - Subtle Premium Texture */}
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] -z-10 opacity-60" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-400/5 rounded-full blur-[100px] -z-10 opacity-60" />
+        <section className="relative min-h-[90vh] flex flex-col justify-center px-6 pt-20 overflow-hidden">
 
-            <div className="absolute inset-0 max-w-7xl mx-auto px-6 flex items-center justify-end pointer-events-none -z-10 opacity-30 lg:opacity-100">
-                <div className="hidden lg:block relative w-[600px] h-[700px] mt-20">
-                    <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-10" />
-                    <Image
-                        src="https://images.unsplash.com/photo-1558494949-ef2fedefb017?q=80&w=2000&auto=format&fit=crop"
-                        alt="Distributed Systems Server Infrastructure"
-                        fill
-                        className="object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700"
-                        priority
-                    />
-                </div>
-            </div>
+
 
             <motion.div
                 style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
@@ -127,20 +111,7 @@ export function HeroSection() {
                             </Magnetic>
                         </motion.div>
 
-                        <motion.div variants={fadeUp} className="flex items-center gap-6 pt-8 text-muted-foreground">
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors transform hover:scale-110 duration-200">
-                                <Github className="w-6 h-6" />
-                                <span className="sr-only">GitHub</span>
-                            </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors transform hover:scale-110 duration-200">
-                                <Linkedin className="w-6 h-6" />
-                                <span className="sr-only">LinkedIn</span>
-                            </a>
-                            <a href="mailto:hello@manu.dev" className="hover:text-foreground transition-colors transform hover:scale-110 duration-200">
-                                <Mail className="w-6 h-6" />
-                                <span className="sr-only">Email</span>
-                            </a>
-                        </motion.div>
+
 
 
                         {/* Visual Space for Image */}

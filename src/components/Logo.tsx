@@ -8,10 +8,13 @@ interface LogoProps {
 
 export function Logo({ className }: LogoProps) {
     return (
-        <div className={cn("font-serif font-bold tracking-tighter flex items-baseline select-none", className)}>
-            <span className="text-3xl italic">M</span>
-            <span className="text-3xl">anu</span>
-            <span className="text-4xl text-accent leading-none">.</span>
+        <div className={cn("font-serif select-none", className)}>
+            <div className="text-2xl font-bold tracking-tight text-foreground">
+                NexuM Labs
+            </div>
+            <div className="text-xs text-muted-foreground tracking-wide mt-0.5">
+                Where African innovation meets global tech.
+            </div>
         </div>
     );
 }

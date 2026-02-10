@@ -40,7 +40,7 @@ export function ProjectCard({
         <Link
             href={`/projects/${slug}`}
             className={cn(
-                "group relative block overflow-hidden rounded-2xl bg-muted/20 border border-border/50 hover:border-border transition-all duration-300 hover:shadow-xl active:scale-[0.98]",
+                "group relative block overflow-hidden rounded-2xl bg-muted/20 border border-border/50 hover:border-border transition-all duration-300 active:scale-[0.98]",
                 className
             )}
             onMouseEnter={() => setIsHovered(true)}
