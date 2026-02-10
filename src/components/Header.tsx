@@ -170,42 +170,48 @@ export function Header() {
             {isOpen && (
                 <div
                     id="mobile-menu"
-                    className="fixed inset-0 top-16 bg-background border-t border-border/40 p-6 lg:hidden flex flex-col gap-8 overflow-y-auto animate-in slide-in-from-top-5"
+                    className="fixed inset-0 top-16 bg-background z-40 p-6 lg:hidden flex flex-col overflow-y-auto animate-in slide-in-from-top-5 duration-300"
                 >
-                    {NAVIGATION.map((group) => (
-                        <div key={group.title} className="space-y-3">
-                            <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                                {group.title}
-                            </h3>
-                            <div className="space-y-2">
-                                {group.children?.map((child) => (
-                                    <Link
-                                        key={child.href}
-                                        href={child.href}
-                                        className={cn(
-                                            "block text-lg font-medium text-foreground/90 py-2",
-                                            "hover:text-accent transition-colors",
-                                            "focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded"
-                                        )}
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        {child.title}
-                                    </Link>
-                                ))}
+                    <div className="flex-1 space-y-8 pb-6">
+                        {NAVIGATION.map((group) => (
+                            <div key={group.title} className="space-y-4">
+                                <div className="flex items-center gap-2">
+                                    <h3 className="text-xs font-bold uppercase tracking-widest text-accent">
+                                        {group.title}
+                                    </h3>
+                                    <div className="flex-1 h-px bg-border/40" />
+                                </div>
+                                <div className="space-y-1 pl-2">
+                                    {group.children?.map((child) => (
+                                        <Link
+                                            key={child.href}
+                                            href={child.href}
+                                            className={cn(
+                                                "block text-base font-medium text-foreground py-3 px-4 rounded-lg",
+                                                "hover:bg-accent/10 hover:text-accent active:bg-accent/20 transition-all",
+                                                "focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2",
+                                                "min-h-[48px] flex items-center" // Accessibility: 48px touch target
+                                            )}
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            {child.title}
+                                        </Link>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
 
-                    {/* Mobile CTA */}
-                    <div className="mt-4 pt-6 border-t border-border">
+                    {/* Mobile CTA - Sticky Footer */}
+                    <div className="sticky bottom-0 pt-6 pb-2 bg-background border-t border-border/40 mt-auto">
                         <Link
                             href={PRIMARY_CTA.href}
-                            className="flex items-center justify-center w-full text-lg font-medium py-4 rounded-xl bg-foreground text-background focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                            className="flex items-center justify-center w-full text-base font-semibold py-4 px-6 rounded-xl bg-foreground text-background hover:bg-foreground/90 active:scale-[0.98] transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 min-h-[56px]"
                             onClick={() => setIsOpen(false)}
                         >
                             {PRIMARY_CTA.title}
                         </Link>
-                        <p className="text-center text-xs text-muted-foreground mt-4">
+                        <p className="text-center text-xs text-muted-foreground mt-3 leading-relaxed">
                             Replies within 24h · Working from Nairobi (EAT/UTC+3)
                         </p>
                     </div>
