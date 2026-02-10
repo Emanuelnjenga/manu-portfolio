@@ -63,7 +63,7 @@ export function Header() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors relative group font-serif italic"
+                            className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors relative group font-serif"
                         >
                             {link.name}
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
@@ -94,7 +94,7 @@ export function Header() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-2xl font-serif italic py-3 hover:text-accent border-b border-border/40 last:border-0"
+                            className="text-2xl font-serif py-3 hover:text-accent border-b border-border/40 last:border-0"
                             onClick={() => setIsOpen(false)}
                         >
                             {link.name}
