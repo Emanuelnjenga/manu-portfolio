@@ -47,13 +47,14 @@ export function Header() {
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white",
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-black",
+                scrolled ? "bg-background/90 backdrop-blur-xl shadow-sm supports-[backdrop-filter]:bg-background/75" : "bg-transparent",
                 visible ? "translate-y-0" : "-translate-y-full"
             )}
         >
             <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
                 <Link href="/" className="hover:opacity-80 transition-opacity">
-                    <Logo />
+                    <Logo showTagline={false} />
                 </Link>
 
                 {/* Desktop Nav */}
