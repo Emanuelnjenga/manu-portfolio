@@ -9,7 +9,9 @@ import { Logo } from "@/components/Logo";
 const navLinks = [
     { name: "Services", href: "/#services" },
     { name: "Work", href: "/#case-studies" },
-    { name: "Process", href: "/#process" },
+    { name: "Enterprise", href: "/enterprise" },
+    { name: "Startups", href: "/startups" },
+    { name: "Insights", href: "/insights" },
     { name: "About", href: "/#about" },
 ];
 

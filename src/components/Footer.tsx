@@ -14,8 +14,8 @@ const socialLinks = [
 export function Footer() {
     return (
         <footer className="bg-background border-t border-border/40 py-12 px-6">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div className="md:col-span-2 space-y-8">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+                <div className="lg:col-span-2 space-y-8">
                     <div className="space-y-6">
                         <Link href="/" className="inline-block">
                             <Logo />
@@ -43,11 +43,21 @@ export function Footer() {
                 </div>
 
                 <div>
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4">Company</h3>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4">Solutions</h3>
                     <ul className="space-y-3 text-sm text-muted-foreground">
-                        <li><Link href="/about" className="hover:text-foreground transition-colors">About Founder</Link></li>
+                        <li><Link href="/enterprise" className="hover:text-foreground transition-colors">Enterprise</Link></li>
+                        <li><Link href="/startups" className="hover:text-foreground transition-colors">For Startups</Link></li>
                         <li><Link href="/#services" className="hover:text-foreground transition-colors">Services</Link></li>
                         <li><Link href="/#case-studies" className="hover:text-foreground transition-colors">Case Studies</Link></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4">Company</h3>
+                    <ul className="space-y-3 text-sm text-muted-foreground">
+                        <li><Link href="/company" className="hover:text-foreground transition-colors">About</Link></li>
+                        <li><Link href="/insights" className="hover:text-foreground transition-colors">Insights</Link></li>
+                        <li><Link href="/community" className="hover:text-foreground transition-colors">Community</Link></li>
                         <li><Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link></li>
                     </ul>
                 </div>
@@ -57,6 +67,7 @@ export function Footer() {
                     <ul className="space-y-3 text-sm text-muted-foreground">
                         <li><Link href="/legal/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link></li>
                         <li><Link href="/legal/terms" className="hover:text-foreground transition-colors">Terms of Service</Link></li>
+                        <li><Link href="/legal/security" className="hover:text-foreground transition-colors">Security</Link></li>
                         <li><span className="opacity-50">Registered in Kenya (Placeholder)</span></li>
                     </ul>
                 </div>
