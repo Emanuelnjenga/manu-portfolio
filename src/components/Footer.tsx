@@ -9,7 +9,7 @@ import { FOOTER_SECTIONS, UTILITY_LINKS } from "@/lib/navigation";
 export function Footer() {
     return (
         <footer className="bg-background border-t border-border/40 py-12 px-6">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-7 gap-8">
                 {/* Brand Column */}
                 <div className="lg:col-span-2 space-y-8">
                     <div className="space-y-6">

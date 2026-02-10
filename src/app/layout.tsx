@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { CookieConsent } from "@/components/CookieConsent";
+import { ManuAssistant } from "@/components/ManuAssistant";
 import { generateProfilePageSchema } from "@/lib/jsonld";
 
 const inter = Inter({
@@ -80,6 +81,7 @@ export default function RootLayout({
           {children}
         </SmoothScroll>
         <CookieConsent />
+        <ManuAssistant />
       </body>
     </html>
   );

@@ -41,7 +41,8 @@ export const NAVIGATION: NavItem[] = [
         href: "/insights",
         description: "Thought leadership and community",
         children: [
-            { title: "Blog", href: "/insights" },
+            { title: "Insights", href: "/insights" },
+            { title: "Blog", href: "/blog" },
             { title: "Community", href: "/community" },
         ]
     },
@@ -51,10 +52,10 @@ export const NAVIGATION: NavItem[] = [
         description: "About us, governance, and credibility",
         children: [
             { title: "About", href: "/company" },
+            { title: "Team", href: "/team" },
             { title: "Investors", href: "/investors" },
             { title: "Press", href: "/press" },
             { title: "Careers", href: "/careers" },
-            { title: "Legal", href: "/legal/privacy" },
         ]
     },
 ];
@@ -92,7 +93,8 @@ export const FOOTER_SECTIONS = [
     {
         title: "Insights",
         links: [
-            { title: "Blog", href: "/insights" },
+            { title: "Insights", href: "/insights" },
+            { title: "Blog", href: "/blog" },
             { title: "Community", href: "/community" },
             { title: "Global Reach", href: "/global" },
             { title: "Performance", href: "/performance" },
@@ -102,11 +104,21 @@ export const FOOTER_SECTIONS = [
         title: "Company",
         links: [
             { title: "About", href: "/company" },
+            { title: "Team", href: "/team" },
             { title: "Investors", href: "/investors" },
             { title: "Press", href: "/press" },
             { title: "Careers", href: "/careers" },
             { title: "Legal", href: "/legal/privacy" },
             { title: "Security", href: "/legal/security" },
+        ]
+    },
+    {
+        title: "Engineer",
+        links: [
+            { title: "Resume", href: "/resume" },
+            { title: "Projects", href: "/projects" },
+            { title: "Process", href: "/process" },
+            { title: "About Me", href: "/about" },
         ]
     },
     {

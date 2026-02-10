@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { Menu, X, Github, Linkedin } from "lucide-react";
+import { Menu, X, Github, Linkedin, ChevronDown } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { NAVIGATION, UTILITY_LINKS, PRIMARY_CTA } from "@/lib/navigation";
 
@@ -11,7 +11,9 @@ export function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [visible, setVisible] = useState(true);
+    const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
     const lastScrollY = useRef(0);
+    const dropdownTimeout = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,6 +21,7 @@ export function Header() {
 
             if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
                 setVisible(false);
+                setActiveDropdown(null); // Close dropdowns on scroll down
             } else {
                 setVisible(true);
             }
@@ -30,6 +33,19 @@ export function Header() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const handleMouseEnter = (title: string) => {
+        if (dropdownTimeout.current) {
+            clearTimeout(dropdownTimeout.current);
+        }
+        setActiveDropdown(title);
+    };
+
+    const handleMouseLeave = () => {
+        dropdownTimeout.current = setTimeout(() => {
+            setActiveDropdown(null);
+        }, 150);
+    };
 
     return (
         <header
@@ -53,17 +69,44 @@ export function Header() {
                 <div className="hidden lg:flex items-center gap-10">
                     <nav className="flex items-center gap-10" aria-label="Primary navigation">
                         {NAVIGATION.map((item) => (
-                            <Link
+                            <div
                                 key={item.title}
-                                href={item.href}
-                                className={cn(
-                                    "text-sm font-medium text-muted-foreground hover:text-foreground transition-colors",
-                                    "focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded px-2 py-1"
-                                )}
-                                prefetch={item.href.startsWith("/enterprise") || item.href.startsWith("/#") ? true : false}
+                                className="relative"
+                                onMouseEnter={() => handleMouseEnter(item.title)}
+                                onMouseLeave={handleMouseLeave}
                             >
-                                {item.title}
-                            </Link>
+                                <Link
+                                    href={item.href}
+                                    className={cn(
+                                        "group text-sm font-medium text-muted-foreground hover:text-foreground transition-colors",
+                                        "focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded px-2 py-1",
+                                        "flex items-center gap-1 relative"
+                                    )}
+                                    prefetch={item.href.startsWith("/enterprise") || item.href.startsWith("/#") ? true : false}
+                                >
+                                    {item.title}
+                                    {item.children && item.children.length > 0 && (
+                                        <ChevronDown className="w-3 h-3" />
+                                    )}
+                                    {/* Sliding blue line */}
+                                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
+                                </Link>
+
+                                {/* Dropdown Menu */}
+                                {item.children && item.children.length > 0 && activeDropdown === item.title && (
+                                    <div className="absolute top-full left-0 mt-2 w-56 bg-background border border-border/40 rounded-lg shadow-xl py-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                                        {item.children.map((child) => (
+                                            <Link
+                                                key={child.href}
+                                                href={child.href}
+                                                className="block px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+                                            >
+                                                {child.title}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                         ))}
                     </nav>
 
