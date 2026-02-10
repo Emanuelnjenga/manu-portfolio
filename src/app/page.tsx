@@ -23,7 +23,7 @@ export default function Home() {
         <HeroSection />
 
         {/* About Preview */}
-        <Section className="bg-muted/10">
+        <Section>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <Reveal>
               <h2 className="text-3xl md:text-4xl font-serif mb-6">Bridging the gap between complexity and clarity.</h2>
@@ -93,14 +93,14 @@ export default function Home() {
         </Section>
 
         {/* Skills Snapshot */}
-        <Section className="bg-foreground text-background">
+        <Section>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
             <Reveal>
-              <h2 className="text-3xl md:text-4xl font-serif mb-6 text-white">Technical Arsenal</h2>
-              <p className="text-gray-400 text-lg leading-relaxed mb-8">
+              <h2 className="text-3xl md:text-4xl font-serif mb-6 text-foreground">Technical Arsenal</h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
                 My toolbox is vast, but I choose the right tool for the job. I prioritize stability, maintainability, and developer experience over hype.
               </p>
-              <Button asChild variant="outline" className="text-foreground bg-white hover:bg-gray-100 border-none">
+              <Button asChild variant="outline">
                 <Link href="/resume">
                   <Download className="mr-2 w-4 h-4" /> Download Resume
                 </Link>
@@ -112,7 +112,7 @@ export default function Home() {
                   <h3 className="text-accent text-lg font-medium mb-4">{group.category}</h3>
                   <ul className="space-y-2">
                     {group.items.map((skill) => (
-                      <li key={skill} className="text-gray-300 text-sm">{skill}</li>
+                      <li key={skill} className="text-muted-foreground text-sm">{skill}</li>
                     ))}
                   </ul>
                 </Reveal>
