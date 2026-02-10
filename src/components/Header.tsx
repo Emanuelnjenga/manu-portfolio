@@ -7,12 +7,10 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/Logo";
 
 const navLinks = [
-    { name: "About", href: "/about" },
-    { name: "Projects", href: "/projects" },
-    { name: "System Design", href: "/system-design" },
-    { name: "AI & Automation", href: "/ai" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    { name: "Services", href: "#services" },
+    { name: "Work", href: "#work" },
+    { name: "Process", href: "#process" },
+    { name: "About", href: "#about" },
 ];
 
 export function Header() {
@@ -25,18 +23,13 @@ export function Header() {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            // Determine scroll direction and visibility
             if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-                // Scrolling DOWN and not at very top
                 setVisible(false);
             } else {
-                // Scrolling UP
                 setVisible(true);
             }
 
-            // Glassmorphism state
             setScrolled(currentScrollY > 20);
-
             lastScrollY.current = currentScrollY;
         };
 
@@ -47,35 +40,42 @@ export function Header() {
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b border-black",
-                scrolled ? "bg-background/90 backdrop-blur-xl shadow-sm supports-[backdrop-filter]:bg-background/75" : "bg-transparent",
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
+                scrolled ? "bg-background/80 backdrop-blur-md border-border/40" : "bg-transparent",
                 visible ? "translate-y-0" : "-translate-y-full"
             )}
         >
-            <div className="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
+            <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                 <Link href="/" className="hover:opacity-80 transition-opacity">
-                    <Logo showTagline={false} />
+                    <Logo />
                 </Link>
 
                 {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center gap-10">
-                    {navLinks.map((link) => (
+                <div className="hidden md:flex items-center gap-8">
+                    <nav className="flex items-center gap-8">
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
+                    </nav>
+                    <div className="h-6 w-px bg-border/60" />
+                    <div className="flex items-center gap-4">
+                        <span className="text-xs text-muted-foreground hidden lg:inline-block">
+                            Emmanuel Njenga — Systems Engineer
+                        </span>
                         <Link
-                            key={link.name}
-                            href={link.href}
-                            className="text-base font-medium text-foreground hover:text-accent transition-colors relative group font-serif"
+                            href="/contact"
+                            className="text-sm font-medium px-5 py-2.5 rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all"
                         >
-                            {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
+                            Start a Conversation
                         </Link>
-                    ))}
-                    <Link
-                        href="/resume"
-                        className="text-base font-medium px-6 py-2 rounded-full border border-foreground/10 hover:bg-foreground hover:text-background transition-all hover:scale-105 active:scale-95 duration-200 font-serif"
-                    >
-                        Resume
-                    </Link>
-                </nav>
+                    </div>
+                </div>
 
                 {/* Mobile Toggle */}
                 <button
@@ -89,24 +89,29 @@ export function Header() {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="absolute top-16 left-0 right-0 bg-background border-b border-border p-6 md:hidden flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-2 h-screen">
+                <div className="fixed inset-0 top-20 bg-background border-t border-border/40 p-6 md:hidden flex flex-col gap-6 animate-in slide-in-from-top-5">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-2xl font-serif py-3 hover:text-accent border-b border-border/40 last:border-0"
+                            className="text-2xl font-display font-medium text-foreground/90 py-2 border-b border-border/20 last:border-0"
                             onClick={() => setIsOpen(false)}
                         >
                             {link.name}
                         </Link>
                     ))}
-                    <Link
-                        href="/resume"
-                        className="text-2xl font-serif py-3 hover:text-accent"
-                        onClick={() => setIsOpen(false)}
-                    >
-                        Resume
-                    </Link>
+                    <div className="mt-4 pt-6 border-t border-border">
+                        <Link
+                            href="/contact"
+                            className="flex items-center justify-center w-full text-lg font-medium py-4 rounded-xl bg-foreground text-background"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            Start a Conversation
+                        </Link>
+                        <p className="text-center text-xs text-muted-foreground mt-4">
+                            Emmanuel Njenga — Systems Engineer & Founder
+                        </p>
+                    </div>
                 </div>
             )}
         </header>

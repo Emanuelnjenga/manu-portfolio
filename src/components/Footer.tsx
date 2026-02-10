@@ -1,86 +1,66 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, Twitter, ArrowUp } from "lucide-react";
-import { Magnetic } from "@/components/Magnetic";
-import { Button } from "@/components/Button";
+import { ArrowUpRight } from "lucide-react";
 import { Logo } from "@/components/Logo";
 
+const socialLinks = [
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/yourprofile" },
+    { name: "GitHub", href: "https://github.com/yourusername" },
+    { name: "Twitter", href: "https://twitter.com/yourusername" },
+];
+
 export function Footer() {
-    const currentYear = new Date().getFullYear();
-
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
     return (
-        <footer className="border-t border-border bg-background/50 backdrop-blur-sm relative overflow-hidden">
-            {/* Gradient Accent at Bottom */}
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
-
-            <div className="max-w-7xl mx-auto px-6 py-12 md:py-20">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-16">
-                    <div className="col-span-1 md:col-span-2">
-                        <Link href="/" className="inline-block mb-6 hover:opacity-80 transition-opacity">
-                            <Logo />
-                        </Link>
-                        <p className="text-muted-foreground max-w-sm text-lg leading-relaxed text-pretty">
-                            Designing scalable systems, intelligent products, and high-impact digital experiences.
-                        </p>
-                    </div>
-
-                    <div>
-                        <h4 className="font-semibold mb-6 text-foreground tracking-tight">Navigation</h4>
-                        <ul className="space-y-3">
-                            {[
-                                { name: "Selected Work", href: "/projects" },
-                                { name: "About Me", href: "/about" },
-                                { name: "System Design", href: "/system-design" },
-                                { name: "AI Experiments", href: "/ai" },
-                            ].map((item) => (
-                                <li key={item.name}>
-                                    <Link href={item.href} className="text-muted-foreground hover:text-accent transition-colors hover:translate-x-1 inline-block duration-200">
-                                        {item.name}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="font-semibold mb-6 text-foreground tracking-tight">Connect</h4>
-                        <div className="flex gap-3">
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-foreground/5 rounded-lg hover:bg-accent hover:text-white transition-all duration-200 border border-border/50 hover:border-accent">
-                                <Github className="w-5 h-5" />
-                                <span className="sr-only">GitHub</span>
-                            </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-foreground/5 rounded-lg hover:bg-accent hover:text-white transition-all duration-200 border border-border/50 hover:border-accent">
-                                <Linkedin className="w-5 h-5" />
-                                <span className="sr-only">LinkedIn</span>
-                            </a>
-                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-foreground/5 rounded-lg hover:bg-accent hover:text-white transition-all duration-200 border border-border/50 hover:border-accent">
-                                <Twitter className="w-5 h-5" />
-                                <span className="sr-only">Twitter</span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-muted-foreground">
-                    <p>© {currentYear} NexuM Labs. All rights reserved.</p>
-
-                    <div className="flex items-center gap-8">
-                        <div className="flex gap-6">
-                            <Link href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-                            <Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link>
-                        </div>
-
-                        <Button variant="ghost" size="icon" onClick={scrollToTop} className="rounded-full hover:bg-accent/10 hover:text-accent" aria-label="Back to top">
-                            <ArrowUp className="w-4 h-4" />
-                        </Button>
+        <footer className="bg-background border-t border-border/40 py-12 px-6">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div className="md:col-span-2 space-y-6">
+                    <Link href="/" className="inline-block">
+                        <Logo />
+                    </Link>
+                    <p className="text-muted-foreground max-w-sm leading-relaxed">
+                        NexuM Labs builds cloud-native systems and AI-enabled products for startups and enterprises.
+                        <br />
+                        <span className="opacity-75 text-sm mt-2 block">Founded by Emmanuel Njenga.</span>
+                    </p>
+                    <div className="flex gap-4">
+                        {socialLinks.map((link) => (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm font-medium text-foreground hover:text-accent transition-colors flex items-center gap-1"
+                            >
+                                {link.name} <ArrowUpRight className="w-3 h-3" />
+                            </Link>
+                        ))}
                     </div>
                 </div>
+
+                <div>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4">Company</h3>
+                    <ul className="space-y-3 text-sm text-muted-foreground">
+                        <li><Link href="/about" className="hover:text-foreground transition-colors">About Founder</Link></li>
+                        <li><Link href="/#services" className="hover:text-foreground transition-colors">Services</Link></li>
+                        <li><Link href="/#case-studies" className="hover:text-foreground transition-colors">Case Studies</Link></li>
+                        <li><Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4">Legal</h3>
+                    <ul className="space-y-3 text-sm text-muted-foreground">
+                        <li><Link href="/legal/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link></li>
+                        <li><Link href="/legal/terms" className="hover:text-foreground transition-colors">Terms of Service</Link></li>
+                        <li><span className="opacity-50">Registered in Kenya (Placeholder)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-border/40 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
+                <p>&copy; {new Date().getFullYear()} NexuM Labs. All rights reserved.</p>
+                <p>hello@nexumlabs.example</p>
             </div>
         </footer>
     );

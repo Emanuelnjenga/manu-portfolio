@@ -1,19 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  /* Softer, more premium colors */
+  /* NexuM Labs Palette */
   --background: #FFFFFF;
-  --foreground: #0a0a0a;
-  /* Soft black */
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --border: #e4e4e7;
-  --accent: #007AFF;
+  --foreground: #0F1724; /* Charcoal */
+  
+  --muted: #f3f4f6;
+  --muted-foreground: #6B7280; /* Muted Gray */
+  
+  --border: #e5e7eb;
+  
+  --accent: #0B5FFF; /* NexuM Blue */
+  --accent-warm: #FFB86B; /* Warm Accent */
 
-  /* Typography */
-  --font-times: "Times New Roman", Times, serif;
-  --font-sans: "Times New Roman", Times, serif;
-  /* Force serif everywhere */
+  /* Typography Variables from Next.js */
+  --font-inter: var(--font-inter);
+  --font-space: var(--font-space);
 }
 
 @theme inline {
@@ -23,29 +25,28 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-accent: var(--accent);
-  --font-sans: var(--font-times);
-  --font-serif: var(--font-times);
+  --color-accent-warm: var(--accent-warm);
+  
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-space), ui-serif, Georgia, serif;
+  --font-display: var(--font-space), ui-serif, Georgia, serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-times);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Premium Typography Utilities */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* Typography Utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
   letter-spacing: -0.02em;
-  /* Tighter headings */
   text-wrap: balance;
+  font-weight: 700;
 }
 
 p {
@@ -76,7 +77,6 @@ p {
     opacity: 0;
     transform: translateY(10px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
