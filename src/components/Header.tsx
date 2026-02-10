@@ -65,7 +65,11 @@ export function Header() {
                     </nav>
                     <div className="h-6 w-px bg-border/60" />
                     <div className="flex items-center gap-4">
-                        <span className="text-xs text-muted-foreground hidden lg:inline-block">
+                        <div className="hidden xl:flex flex-col items-end text-xs text-muted-foreground leading-tight">
+                            <span>Working globally from Kenya</span>
+                            <span className="font-mono text-[10px] opacity-70">Nairobi (EAT / UTC+3)</span>
+                        </div>
+                        <span className="text-xs text-muted-foreground hidden lg:inline-block border-l border-border/60 pl-4 h-6 flex items-center">
                             Emmanuel Njenga — Systems Engineer
                         </span>
                         <Link

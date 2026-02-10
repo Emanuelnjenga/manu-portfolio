@@ -15,6 +15,11 @@ interface EventProperties {
 export const analytics = {
     track: (name: EventName, properties?: EventProperties) => {
         // In production, this would send to Google Analytics, Mixpanel, or PostHog
+        if (process.env.NEXT_PUBLIC_ANALYTICS_ID) {
+            // Example: window.gtag('event', name, properties);
+            console.log(`[Analytics] Sending to ${process.env.NEXT_PUBLIC_ANALYTICS_ID}: ${name}`, properties);
+        }
+
         if (process.env.NODE_ENV === "development") {
             console.groupCollapsed(`[Analytics] ${name}`);
             console.log(properties);

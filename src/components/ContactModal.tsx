@@ -35,16 +35,31 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
         setLoading(true);
         analytics.track("form_submit", { type: formData.type, budget: formData.budget });
 
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        try {
+            if (process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT) {
+                await fetch(process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+            } else {
+                // Fallback simulation for dev/demo
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                console.warn("No CONTACT_FORM_ENDPOINT configured. Simulating success.");
+            }
 
-        setLoading(false);
-        setSuccess(true);
-        setTimeout(() => {
-            setSuccess(false);
-            setStep(1);
-            onClose();
-        }, 3000);
+            setLoading(false);
+            setSuccess(true);
+            setTimeout(() => {
+                setSuccess(false);
+                setStep(1);
+                onClose();
+            }, 3000);
+        } catch (error) {
+            console.error("Form submission error:", error);
+            setLoading(false);
+            alert("Something went wrong. Please try again or email directly.");
+        }
     };
 
     return createPortal(
