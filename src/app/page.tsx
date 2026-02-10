@@ -8,6 +8,7 @@ import { HowIWorkSection } from "@/components/HowIWorkSection";
 import { CaseStudyTeasers } from "@/components/CaseStudyTeasers";
 import { Footer } from "@/components/Footer";
 import { ContactModal } from "@/components/ContactModal";
+import { GlobalMap } from "@/components/GlobalMap";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -60,6 +61,10 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+
+
+
 
         {/* About / Founder */}
         <section id="about" className="py-24 px-6">

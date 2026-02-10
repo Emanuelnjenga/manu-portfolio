@@ -3,15 +3,19 @@
 :root {
   /* NexuM Labs Palette */
   --background: #FFFFFF;
-  --foreground: #0F1724; /* Charcoal */
-  
+  --foreground: #0F1724;
+  /* Charcoal */
+
   --muted: #f3f4f6;
-  --muted-foreground: #6B7280; /* Muted Gray */
-  
+  --muted-foreground: #6B7280;
+  /* Muted Gray */
+
   --border: #e5e7eb;
-  
-  --accent: #0B5FFF; /* NexuM Blue */
-  --accent-warm: #FFB86B; /* Warm Accent */
+
+  --accent: #0B5FFF;
+  /* NexuM Blue */
+  --accent-warm: #FFB86B;
+  /* Warm Accent */
 
   /* Typography Variables from Next.js */
   --font-inter: var(--font-inter);
@@ -26,10 +30,10 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-warm: var(--accent-warm);
-  
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-space), ui-serif, Georgia, serif;
-  --font-display: var(--font-space), ui-serif, Georgia, serif;
+
+  --font-sans: "Times New Roman", Times, serif;
+  --font-serif: "Times New Roman", Times, serif;
+  --font-display: "Times New Roman", Times, serif;
 }
 
 body {
@@ -42,7 +46,12 @@ body {
 }
 
 /* Typography Utilities */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   letter-spacing: -0.02em;
   text-wrap: balance;
@@ -77,6 +86,7 @@ p {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

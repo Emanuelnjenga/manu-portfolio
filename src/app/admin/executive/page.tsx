@@ -10,7 +10,7 @@ export default function ExecutivePage() {
                     { label: "ARR (Projected)", value: "$1.45M", change: "+12%", icon: DollarSign, color: "text-green-500" },
                     { label: "Active Clients", value: "8", change: "+2", icon: Users, color: "text-blue-500" },
                     { label: "Runway", value: "14 months", change: "-1mo", icon: Activity, color: "text-amber-500" },
-                    { label: "Risk Score", value: "Low (12)", change: "Stable", icon: AlertTriangle, color: "text-purple-500" }
+                    { label: "Compliance", value: "98% Ready", change: "Audit Prep", icon: FileCheck, color: "text-purple-500" }
                 ].map((stat, i) => (
                     <div key={i} className="p-6 bg-background border border-border rounded-xl">
                         <div className="flex items-center justify-between mb-2">

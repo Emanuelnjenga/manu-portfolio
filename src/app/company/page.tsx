@@ -1,6 +1,7 @@
 import { Button } from "@/components/Button";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { OrgChart } from "@/components/OrgChart";
 
 export default function CompanyPage() {
     return (
@@ -54,6 +55,9 @@ export default function CompanyPage() {
                     ))}
                 </div>
             </section>
+
+            {/* Org Chart */}
+            <OrgChart />
 
             {/* Governance */}
             <section className="mb-24 pt-12 border-t border-border">
