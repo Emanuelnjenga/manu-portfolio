@@ -1,7 +1,9 @@
 "use client";
 
+
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { TrustBar } from "@/components/TrustBar";
 import { PerformanceBlock } from "@/components/PerformanceBlock";
 import { PartnersSection } from "@/components/PartnersSection";
@@ -13,9 +15,15 @@ export default function EnterprisePage() {
     return (
         <>
             <Header />
-            <main className="pt-24">
+            <main className="pt-32">
+                <div className="max-w-7xl mx-auto px-6">
+                    <Breadcrumbs items={[
+                        { label: "Solutions", href: "/enterprise" },
+                        { label: "Enterprise", href: "/enterprise" }
+                    ]} />
+                </div>
                 {/* Hero */}
-                <section className="py-24 px-6 bg-background">
+                <section className="py-16 px-6 bg-background">
                     <div className="max-w-5xl mx-auto text-center">
                         <div className="inline-block px-3 py-1 mb-6 text-xs font-bold tracking-widest text-accent uppercase bg-accent/10 rounded-full">
                             Enterprise Grade
