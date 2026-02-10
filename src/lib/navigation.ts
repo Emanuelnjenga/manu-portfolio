@@ -109,4 +109,13 @@ export const FOOTER_SECTIONS = [
             { title: "Security", href: "/legal/security" },
         ]
     },
+    {
+        title: "Admin",
+        links: [
+            { title: "Executive Dashboard", href: "/admin/executive" },
+            { title: "Content Management", href: "/admin/content" },
+            { title: "Documents", href: "/admin/documents" },
+            { title: "Analytics", href: "/admin/analytics" },
+        ]
+    },
 ];
