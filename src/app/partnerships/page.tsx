@@ -1,59 +1,78 @@
+"use client";
+
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { PartnersSection } from "@/components/PartnersSection";
 import { Button } from "@/components/Button";
 import Link from "next/link";
-import { ArrowLeft, Handshake, Cpu, Network } from "lucide-react";
+import { CheckCircle, ArrowRight } from "lucide-react";
 
-export default function PartnershipsPage() {
+export default function PartnersPage() {
     return (
-        <main className="max-w-4xl mx-auto px-6 py-24">
-            <Button variant="ghost" asChild className="mb-8 -ml-4 text-muted-foreground hover:text-foreground">
-                <Link href="/"><ArrowLeft className="w-4 h-4 mr-2" /> Back to Home</Link>
-            </Button>
-
-            <div className="mb-16">
-                <p className="text-accent font-medium mb-4">Ecosystem</p>
-                <h1 className="text-5xl font-display font-bold mb-6">Partner Network</h1>
-                <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                    Collaborating with best-in-class technology providers to deliver integrated, scalable solutions.
-                </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-                {/* Tech Partners */}
-                <div className="p-8 border border-border rounded-2xl bg-muted/10">
-                    <Cpu className="w-8 h-8 text-accent mb-4" />
-                    <h3 className="text-2xl font-bold mb-4">Technology Partners</h3>
-                    <p className="text-muted-foreground mb-6">
-                        We maintain certified expertise with leading infrastructure and AI platforms.
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                        {["Vercel", "AWS", "Supabase", "OpenAI", "Stripe"].map((brand) => (
-                            <span key={brand} className="px-3 py-1 bg-background border border-border rounded-full text-sm font-medium">
-                                {brand}
-                            </span>
-                        ))}
+        <>
+            <Header />
+            <main className="pt-32 pb-24 px-6">
+                <div className="max-w-5xl mx-auto">
+                    {/* Hero */}
+                    <div className="text-center mb-20">
+                        <p className="text-accent font-medium mb-4">Technology Ecosystem</p>
+                        <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
+                            Built on Best-in-Class Infrastructure
+                        </h1>
+                        <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                            NexuM Labs leverages enterprise-grade technology partnerships to deliver scalable, secure, and high-performance solutions to our clients.
+                        </p>
                     </div>
-                </div>
 
-                {/* Integration Partners */}
-                <div className="p-8 border border-border rounded-2xl bg-muted/10">
-                    <Handshake className="w-8 h-8 text-accent mb-4" />
-                    <h3 className="text-2xl font-bold mb-4">Solution Partners</h3>
-                    <p className="text-muted-foreground mb-6">
-                        Joint go-to-market strategies with digital agencies and system integrators.
-                    </p>
-                    <Button variant="outline" asChild><Link href="mailto:partners@nexumlabs.example">Become a Partner</Link></Button>
-                </div>
-            </div>
+                    {/* Partners Section */}
+                    <PartnersSection />
 
-            {/* Reseller Program Stub */}
-            <section className="p-12 bg-accent/5 rounded-3xl text-center">
-                <h2 className="text-3xl font-display font-bold mb-4">Channel Partner Program</h2>
-                <p className="text-muted-foreground max-w-lg mx-auto mb-8">
-                    White-label NexuM Labs' engineering capabilities for your agency.
-                    <span className="block mt-2 font-medium text-foreground">Coming Q3 2026.</span>
-                </p>
-                <Button disabled>Join Waitlist</Button>
-            </section>
-        </main>
+                    {/* Certifications */}
+                    <section className="mt-24 p-12 bg-muted/20 rounded-2xl border border-border">
+                        <h2 className="text-3xl font-bold mb-8">Certifications & Partner Status</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {[
+                                { name: "AWS Advanced Tier", desc: "Serverless & container specialty consulting partner" },
+                                { name: "Vercel Partner", desc: "Next.js and Edge deployment expertise" },
+                                { name: "Stripe Partner", desc: "Payment infrastructure integration" },
+                                { name: "Auth0 Certified", desc: "Identity and access management implementation" }
+                            ].map((cert, i) => (
+                                <div key={i} className="flex gap-4">
+                                    <CheckCircle className="w-6 h-6 text-accent shrink-0 mt-1" />
+                                    <div>
+                                        <div className="font-bold text-lg">{cert.name}</div>
+                                        <div className="text-muted-foreground mt-1">{cert.desc}</div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Reseller Program */}
+                    <section className="mt-24">
+                        <div className="p-12 bg-gradient-to-br from-accent/5 to-accent/10 rounded-2xl border border-accent/20">
+                            <h2 className="text-3xl font-bold mb-4">Become a Partner</h2>
+                            <p className="text-xl text-muted-foreground mb-8 max-w-2xl">
+                                We work with technology partners, system integrators, and agencies to bring NexuM Labs engineering expertise to their clients.
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                                {["White-label services", "Revenue share model", "Co-marketing opportunities"].map((benefit, i) => (
+                                    <div key={i} className="flex items-center gap-2">
+                                        <div className="w-2 h-2 rounded-full bg-accent" />
+                                        <span className="font-medium">{benefit}</span>
+                                    </div>
+                                ))}
+                            </div>
+                            <Button asChild className="gap-2">
+                                <Link href="/contact">
+                                    Apply to Partner Program <ArrowRight className="w-4 h-4" />
+                                </Link>
+                            </Button>
+                        </div>
+                    </section>
+                </div>
+            </main>
+            <Footer />
+        </>
     );
 }

@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { CookieConsent } from "@/components/CookieConsent";
 import { generateProfilePageSchema } from "@/lib/jsonld";
 
 const inter = Inter({
@@ -78,6 +79,7 @@ export default function RootLayout({
         <SmoothScroll>
           {children}
         </SmoothScroll>
+        <CookieConsent />
       </body>
     </html>
   );
