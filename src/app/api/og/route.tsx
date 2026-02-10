@@ -12,16 +12,17 @@ export async function GET(request: NextRequest) {
         const description = searchParams.get('description') || 'Distributed Systems | AI | Product Engineering';
         const tag = searchParams.get('tag');
 
-        // Color scheme matching portfolio
+        // Color scheme matching NexuM Labs (Light Theme)
         const colors = {
-            background: '#0a0a0a',
-            foreground: '#fafafa',
-            accent: '#22c55e',
-            muted: '#171717',
+            background: '#ffffff',
+            foreground: '#0F1724', // Charcoal
+            accent: '#0B5FFF',     // NexuM Blue
+            muted: '#6B7280',      // Muted Gray
+            border: '#e5e7eb'
         };
 
         // Render different templates based on type
-        if (type === 'blog') {
+        if (type === 'blog' || type === 'case-study') {
             return new ImageResponse(
                 (
                     <div
@@ -45,9 +46,9 @@ export async function GET(request: NextRequest) {
                                 left: 0,
                                 right: 0,
                                 bottom: 0,
-                                opacity: 0.1,
-                                backgroundImage: `linear-gradient(${colors.muted} 1px, transparent 1px), linear-gradient(90deg, ${colors.muted} 1px, transparent 1px)`,
-                                backgroundSize: '50px 50px',
+                                opacity: 0.4,
+                                backgroundImage: `linear-gradient(${colors.border} 1px, transparent 1px), linear-gradient(90deg, ${colors.border} 1px, transparent 1px)`,
+                                backgroundSize: '60px 60px',
                             }}
                         />
 
@@ -58,13 +59,14 @@ export async function GET(request: NextRequest) {
                                     style={{
                                         display: 'flex',
                                         alignItems: 'center',
-                                        backgroundColor: colors.accent,
-                                        color: colors.background,
+                                        backgroundColor: 'rgba(11, 95, 255, 0.1)',
+                                        color: colors.accent,
                                         padding: '12px 24px',
                                         borderRadius: '9999px',
                                         fontSize: '24px',
                                         fontWeight: 600,
                                         width: 'fit-content',
+                                        border: `1px solid ${colors.accent}`,
                                     }}
                                 >
                                     {tag}
@@ -73,12 +75,13 @@ export async function GET(request: NextRequest) {
 
                             <h1
                                 style={{
-                                    fontSize: '72px',
-                                    fontWeight: 700,
+                                    fontSize: '80px',
+                                    fontWeight: 800,
                                     color: colors.foreground,
                                     lineHeight: 1.1,
                                     margin: 0,
-                                    maxWidth: '900px',
+                                    maxWidth: '1000px',
+                                    fontFamily: 'sans-serif',
                                 }}
                             >
                                 {title}
@@ -88,10 +91,10 @@ export async function GET(request: NextRequest) {
                                 <p
                                     style={{
                                         fontSize: '32px',
-                                        color: colors.foreground,
-                                        opacity: 0.6,
+                                        color: colors.muted,
                                         margin: 0,
-                                        maxWidth: '800px',
+                                        maxWidth: '900px',
+                                        lineHeight: 1.5,
                                     }}
                                 >
                                     {description}
@@ -104,24 +107,35 @@ export async function GET(request: NextRequest) {
                             style={{
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: '16px',
+                                gap: '20px',
                                 zIndex: 10,
+                                borderTop: `2px solid ${colors.border}`,
+                                width: '100%',
+                                paddingTop: '40px',
                             }}
                         >
                             <div
                                 style={{
-                                    width: '48px',
-                                    height: '48px',
+                                    width: '60px',
+                                    height: '60px',
                                     borderRadius: '50%',
                                     backgroundColor: colors.accent,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    color: 'white',
+                                    fontSize: '32px',
+                                    fontWeight: 'bold',
                                 }}
-                            />
+                            >
+                                M
+                            </div>
                             <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                <span style={{ fontSize: '28px', fontWeight: 600, color: colors.foreground }}>
-                                    Manu
+                                <span style={{ fontSize: '32px', fontWeight: 700, color: colors.foreground }}>
+                                    NexuM Labs
                                 </span>
-                                <span style={{ fontSize: '20px', color: colors.foreground, opacity: 0.6 }}>
-                                    Senior Software Engineer
+                                <span style={{ fontSize: '20px', color: colors.muted }}>
+                                    Systems & AI Engineering
                                 </span>
                             </div>
                         </div>
@@ -134,7 +148,7 @@ export async function GET(request: NextRequest) {
             );
         }
 
-        // Default / Project template
+        // Default / Home template
         return new ImageResponse(
             (
                 <div
@@ -149,7 +163,7 @@ export async function GET(request: NextRequest) {
                         position: 'relative',
                     }}
                 >
-                    {/* Background Gradient */}
+                    {/* Background Pattern */}
                     <div
                         style={{
                             position: 'absolute',
@@ -157,7 +171,7 @@ export async function GET(request: NextRequest) {
                             left: 0,
                             right: 0,
                             bottom: 0,
-                            background: `radial-gradient(circle at 50% 50%, ${colors.accent}15, transparent 70%)`,
+                            background: `radial-gradient(circle at 50% 50%, rgba(11, 95, 255, 0.05) 0%, transparent 50%)`,
                         }}
                     />
 
@@ -171,17 +185,40 @@ export async function GET(request: NextRequest) {
                             textAlign: 'center',
                             zIndex: 10,
                             padding: '80px',
+                            border: `1px solid ${colors.border}`,
+                            borderRadius: '40px',
+                            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                            boxShadow: '0 20px 40px rgba(0,0,0,0.05)',
                         }}
                     >
+                        <div
+                            style={{
+                                width: '100px',
+                                height: '100px',
+                                borderRadius: '50%',
+                                backgroundColor: colors.accent,
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: 'white',
+                                fontSize: '60px',
+                                fontWeight: 'bold',
+                                marginBottom: '40px',
+                            }}
+                        >
+                            M
+                        </div>
+
                         <h1
                             style={{
-                                fontSize: '80px',
-                                fontWeight: 700,
+                                fontSize: '90px',
+                                fontWeight: 800,
                                 color: colors.foreground,
                                 margin: 0,
-                                marginBottom: '32px',
+                                marginBottom: '24px',
                                 maxWidth: '900px',
                                 lineHeight: 1.1,
+                                letterSpacing: '-0.02em',
                             }}
                         >
                             {title}
@@ -189,36 +226,15 @@ export async function GET(request: NextRequest) {
 
                         <p
                             style={{
-                                fontSize: '36px',
-                                color: colors.foreground,
-                                opacity: 0.7,
+                                fontSize: '32px',
+                                color: colors.muted,
                                 margin: 0,
                                 maxWidth: '700px',
+                                marginBottom: '40px',
                             }}
                         >
                             {description}
                         </p>
-
-                        <div
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '16px',
-                                marginTop: '64px',
-                            }}
-                        >
-                            <div
-                                style={{
-                                    width: '8px',
-                                    height: '8px',
-                                    borderRadius: '50%',
-                                    backgroundColor: colors.accent,
-                                }}
-                            />
-                            <span style={{ fontSize: '24px', color: colors.foreground, opacity: 0.6 }}>
-                                manu.dev
-                            </span>
-                        </div>
                     </div>
                 </div>
             ),

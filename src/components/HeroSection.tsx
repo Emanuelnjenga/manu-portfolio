@@ -50,13 +50,14 @@ export function HeroSection() {
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
                                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                                 </span>
-                                <span className="text-foreground font-semibold">Open for:</span>
-                                <span>contract • advisory • enterprise</span>
+                                <span className="text-foreground font-semibold">Remote-first</span>
+                                <span className="text-muted-foreground">•</span>
+                                <span>Nairobi (EAT / UTC+3)</span>
                             </div>
                             <div className="hidden sm:block w-px h-3 bg-border" />
                             <div className="flex items-center gap-1.5 opacity-80">
                                 <Clock className="w-3.5 h-3.5" />
-                                <span>Response time: ~24 hours</span>
+                                <span>Replies within 24h</span>
                             </div>
                         </div>
                     </motion.div>

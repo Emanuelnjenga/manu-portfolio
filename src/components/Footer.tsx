@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Logo } from "@/components/Logo";
+import { VerificationBlock } from "@/components/TrustSignals";
 
 const socialLinks = [
     { name: "LinkedIn", href: "https://www.linkedin.com/in/yourprofile" },
@@ -14,28 +15,31 @@ export function Footer() {
     return (
         <footer className="bg-background border-t border-border/40 py-12 px-6">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-                <div className="md:col-span-2 space-y-6">
-                    <Link href="/" className="inline-block">
-                        <Logo />
-                    </Link>
-                    <p className="text-muted-foreground max-w-sm leading-relaxed">
-                        NexuM Labs builds cloud-native systems and AI-enabled products for startups and enterprises.
-                        <br />
-                        <span className="opacity-75 text-sm mt-2 block">Founded by Emmanuel Njenga.</span>
-                    </p>
-                    <div className="flex gap-4">
-                        {socialLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm font-medium text-foreground hover:text-accent transition-colors flex items-center gap-1"
-                            >
-                                {link.name} <ArrowUpRight className="w-3 h-3" />
-                            </Link>
-                        ))}
+                <div className="md:col-span-2 space-y-8">
+                    <div className="space-y-6">
+                        <Link href="/" className="inline-block">
+                            <Logo />
+                        </Link>
+                        <p className="text-muted-foreground max-w-sm leading-relaxed">
+                            NexuM Labs builds cloud-native systems and AI-enabled products for startups and enterprises.
+                            <br />
+                            <span className="opacity-75 text-sm mt-2 block">Founded by Emmanuel Njenga.</span>
+                        </p>
+                        <div className="flex gap-4">
+                            {socialLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-sm font-medium text-foreground hover:text-accent transition-colors flex items-center gap-1"
+                                >
+                                    {link.name} <ArrowUpRight className="w-3 h-3" />
+                                </Link>
+                            ))}
+                        </div>
                     </div>
+                    <VerificationBlock />
                 </div>
 
                 <div>

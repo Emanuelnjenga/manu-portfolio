@@ -1,0 +1,4 @@
+Contact: mailto:security@nexumlabs.example
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://manu-portfolio-neon.vercel.app/.well-known/security.txt
