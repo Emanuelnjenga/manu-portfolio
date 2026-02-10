@@ -3,8 +3,8 @@
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/Button";
-import { RobotHumanHands } from "@/components/RobotHumanHands";
 import { Magnetic } from "@/components/Magnetic";
 import { useEffect } from "react";
 
@@ -59,8 +59,19 @@ export function HeroSection() {
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] -z-10 opacity-60" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-400/5 rounded-full blur-[100px] -z-10 opacity-60" />
 
-            {/* Robot-Human Hands Visual */}
-            <RobotHumanHands />
+            <div className="absolute inset-0 max-w-7xl mx-auto px-6 flex items-center justify-end pointer-events-none -z-10 opacity-30 lg:opacity-100">
+                <div className="hidden lg:block relative w-[600px] h-[700px] mt-20">
+                    <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-10" />
+                    <Image
+                        src="https://images.unsplash.com/photo-1558494949-ef2fedefb017?q=80&w=2000&auto=format&fit=crop"
+                        alt="Distributed Systems Server Infrastructure"
+                        fill
+                        className="object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700"
+                        priority
+                    />
+                </div>
+            </div>
 
             <motion.div
                 style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
@@ -140,7 +151,7 @@ export function HeroSection() {
                         </motion.div>
                     </motion.div>
 
-                    {/* Visual Space for Hands */}
+                    {/* Visual Space for Image */}
                     <div className="hidden lg:block h-full min-h-[400px]" />
                 </div>
             </motion.div>
