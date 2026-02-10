@@ -7,10 +7,10 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/Logo";
 
 const navLinks = [
-    { name: "Services", href: "#services" },
-    { name: "Work", href: "#work" },
-    { name: "Process", href: "#process" },
-    { name: "About", href: "#about" },
+    { name: "Services", href: "/#services" },
+    { name: "Work", href: "/#case-studies" },
+    { name: "Process", href: "/#process" },
+    { name: "About", href: "/#about" },
 ];
 
 export function Header() {
@@ -41,7 +41,7 @@ export function Header() {
         <header
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
-                scrolled ? "bg-background/80 backdrop-blur-md border-border/40" : "bg-transparent",
+                scrolled || isOpen ? "bg-background/95 backdrop-blur-md border-border/40" : "bg-transparent",
                 visible ? "translate-y-0" : "-translate-y-full"
             )}
         >
