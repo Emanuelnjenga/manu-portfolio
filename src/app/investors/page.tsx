@@ -48,7 +48,7 @@ export default function InvestorsPage() {
                         Access our Virtual Data Room (VDR) for detailed financials, cap table, and due diligence materials. Access requires NDA.
                     </p>
                     <div className="flex gap-4 justify-center">
-                        <Button asChild><Link href="/contact">Request Access</Link></Button>
+                        <Button asChild><Link href="/investors/request">Request Access</Link></Button>
                         <Button variant="outline" disabled>View Pitch Deck (PDF)</Button>
                     </div>
                 </div>

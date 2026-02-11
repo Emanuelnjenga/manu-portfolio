@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/Button";
 import { X, Loader2, Send, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { createPortal } from "react-dom";
-import { analytics } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 
 export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
     const [step, setStep] = useState(1);
@@ -25,7 +25,7 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 
     const handleNext = () => {
         setStep((prev) => prev + 1);
-        analytics.track("contact_open", { step: step + 1 });
+        trackEvent("modal_open", { label: `contact_modal_step_${step + 1}` });
     };
 
     const handleBack = () => setStep((prev) => prev - 1);
@@ -33,7 +33,7 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        analytics.track("form_submit", { type: formData.type, budget: formData.budget });
+        trackEvent("form_submit", { label: "contact_modal", type: formData.type, budget: formData.budget });
 
         try {
             if (process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT) {
@@ -50,6 +50,7 @@ export function ContactModal({ isOpen, onClose }: { isOpen: boolean; onClose: ()
 
             setLoading(false);
             setSuccess(true);
+            trackEvent("form_success", { label: "contact_modal" });
             setTimeout(() => {
                 setSuccess(false);
                 setStep(1);

@@ -35,7 +35,7 @@ export default function EnterprisePage() {
                             Secure, compliant, and performant systems architecture for organizations that cannot afford downtime.
                         </p>
                         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link href="/contact">
+                            <Link href="/enterprise/consultation">
                                 <Button size="lg">Book Engineering Audit</Button>
                             </Link>
                             <Link href="/documents/nexum-capabilities.pdf" target="_blank">
@@ -102,7 +102,7 @@ export default function EnterprisePage() {
                     <p className="text-lg text-gray-400 mb-10 max-w-xl mx-auto">
                         Schedule a confidential consultation to discuss your architectural challenges.
                     </p>
-                    <Link href="/contact">
+                    <Link href="/enterprise/consultation">
                         <Button size="lg" className="bg-background text-foreground hover:bg-gray-100">
                             Book Enterprise Consultation
                         </Button>

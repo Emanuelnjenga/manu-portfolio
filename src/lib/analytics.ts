@@ -1,35 +1,50 @@
 "use client";
 
-type EventName =
-    | "hero_cta_click"
-    | "contact_open"
+/**
+ * NexuM Labs Analytics Utility
+ * 
+ * Provides a unified data layer for event tracking across the platform.
+ * Supports GA4 fallback and console logging in development.
+ */
+
+export type AnalyticsEvent =
+    | "cta_click"
     | "form_submit"
+    | "form_success"
+    | "modal_open"
     | "case_study_view"
-    | "pricing_view"
-    | "scroll_depth";
+    | "pricing_click"
+    | "scroll_depth"
+    | "hero_variant_view";
 
 interface EventProperties {
-    [key: string]: string | number | boolean;
+    label?: string;
+    category?: string;
+    value?: number;
+    path?: string;
+    variant?: "A" | "B";
+    [key: string]: any;
 }
 
-export const analytics = {
-    track: (name: EventName, properties?: EventProperties) => {
-        // In production, this would send to Google Analytics, Mixpanel, or PostHog
-        if (process.env.NEXT_PUBLIC_ANALYTICS_ID) {
-            // Example: window.gtag('event', name, properties);
-            console.log(`[Analytics] Sending to ${process.env.NEXT_PUBLIC_ANALYTICS_ID}: ${name}`, properties);
-        }
+export const trackEvent = (eventName: AnalyticsEvent, props: EventProperties = {}) => {
+    const isDev = process.env.NODE_ENV === "development";
+    const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
-        if (process.env.NODE_ENV === "development") {
-            console.groupCollapsed(`[Analytics] ${name}`);
-            console.log(properties);
-            console.groupEnd();
-        }
-    },
+    const eventData = {
+        ...props,
+        path: typeof window !== "undefined" ? window.location.pathname : undefined,
+        timestamp: new Date().toISOString(),
+    };
 
-    identify: (userId: string, traits?: EventProperties) => {
-        if (process.env.NODE_ENV === "development") {
-            console.log(`[Analytics] Identify: ${userId}`, traits);
-        }
+    // 1. Console Log (Dev/Fallback)
+    if (isDev || !gaId) {
+        console.groupCollapsed(`[Analytics] ${eventName}`);
+        console.log(eventData);
+        console.groupEnd();
+    }
+
+    // 2. Google Analytics (GA4)
+    if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", eventName, eventData);
     }
 };
