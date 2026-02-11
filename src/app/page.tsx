@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Header } from "@/components/Header";
-import { HeroAB } from "@/components/HeroAB";
+import { HeroSection } from "@/components/HeroSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { HowIWorkSection } from "@/components/HowIWorkSection";
 import { CaseStudyTeasers } from "@/components/CaseStudyTeasers";
@@ -21,7 +21,7 @@ export default function Home() {
       <Header />
 
       <main className="flex-1">
-        <HeroAB />
+        <HeroSection />
 
         <ServicesSection />
 
